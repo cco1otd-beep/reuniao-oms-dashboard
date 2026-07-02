@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Reunião OMS - 02/07/2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --border:#e3e5e9;
+    --text:#1a1d24; --text2:#5b6270; --text3:#8a90a0;
+    --green-bg:#e7f6ee; --green-text:#0f7a45; --green-border:#bfe8d3;
+    --amber-bg:#fdf3e3; --amber-text:#a86200; --amber-border:#f5d99b;
+    --red-bg:#fdeaea; --red-text:#b3261e; --red-border:#f6c6c4;
+    --orange:#ed7d31;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; padding:32px 24px 64px; background:var(--bg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--text);}
+  .wrap{max-width:1080px; margin:0 auto;}
+  .header{margin-bottom:28px;}
+  .header .eyebrow{font-size:13px; color:var(--text3); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 4px;}
+  .header h1{font-size:26px; font-weight:600; margin:0 0 6px;}
+  .header p{font-size:14px; color:var(--text2); margin:0;}
+  .section-title{font-size:15px; font-weight:600; color:var(--text); margin:36px 0 14px; display:flex; align-items:center; gap:8px;}
+  .section-title .bar{width:4px; height:16px; background:var(--orange); border-radius:2px; display:inline-block;}
+  .group-block{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 22px; margin-bottom:20px;}
+  .group-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .group-head h2{font-size:17px; font-weight:600; margin:0;}
+  .group-head .badge{font-size:12px; padding:4px 10px; border-radius:20px; font-weight:600;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;}
+  .kpi{border-radius:12px; padding:16px; border:1px solid var(--border);}
+  .kpi .label{font-size:12px; color:var(--text2); margin:0 0 8px; font-weight:600; text-transform:uppercase; letter-spacing:0.03em;}
+  .kpi .value{font-size:30px; font-weight:700; margin:0 0 4px; line-height:1;}
+  .kpi .sub{font-size:12.5px; color:var(--text2); margin:0;}
+  .ok{background:var(--green-bg); border-color:var(--green-border);} .ok .value{color:var(--green-text);}
+  .warn{background:var(--amber-bg); border-color:var(--amber-border);} .warn .value{color:var(--amber-text);}
+  .bad{background:var(--red-bg); border-color:var(--red-border);} .bad .value{color:var(--red-text);}
+  .badge.ok{background:var(--green-bg); color:var(--green-text); border:1px solid var(--green-border);}
+  .badge.warn{background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-border);}
+  .badge.bad{background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border);}
+  .chart-card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:20px;}
+  .chart-card canvas{max-height:280px;}
+  .analysis{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px;}
+  .analysis ul{margin:0; padding-left:0; list-style:none;}
+  .analysis li{display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; line-height:1.5; color:var(--text);}
+  .analysis li:last-child{border-bottom:none;}
+  .analysis li .dot{flex:0 0 8px; height:8px; width:8px; border-radius:50%; margin-top:6px;}
+  .dot.bad{background:var(--red-text);} .dot.warn{background:var(--amber-text);} .dot.ok{background:var(--green-text);}
+  .manual-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px;}
+  .manual-card{border:1px dashed var(--border); border-radius:12px; padding:14px 16px; font-size:13px; color:var(--text2);}
+  .manual-card b{color:var(--text); display:block; margin-bottom:2px; font-size:13px;}
+  .footer{margin-top:36px; font-size:12px; color:var(--text3); border-top:1px solid var(--border); padding-top:16px; line-height:1.6;}
+  .atraso-table{width:100%; border-collapse:collapse; font-size:12.5px;}
+  .atraso-table th{background:#f5f6f8; color:var(--text2); font-weight:600; text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); white-space:nowrap;}
+  .atraso-table td{padding:9px 12px; border-bottom:1px solid var(--border); color:var(--text); white-space:nowrap;}
+  .atraso-table td.mono{font-variant-numeric:tabular-nums; color:var(--text2);}
+  .sev-badge{display:inline-block; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+  .sev-high{background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border);}
+  .sev-mid{background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-border);}
+  .sev-low{background:#f1f1ec; color:#6b6b63; border:1px solid #ddddd2;}
+  @media (max-width:700px){ .kpi-grid{grid-template-columns:1fr;} .manual-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <p class="eyebrow">Painel operacional · OMS</p>
+    <h1>Reunião OMS — 02/07/2026</h1>
+    <p>Indicadores referentes às chegadas de coleta e entrega do dia anterior (01/07/2026) · Fonte: cruzamento LCARGAS × LVIAGENS</p>
+  </div>
+
+  <div class="section-title"><span class="bar"></span>Indicadores por operação</div>
+
+  <div class="group-block">
+    <div class="group-head"><h2>Bens de Consumo</h2></div>
+    <div class="kpi-grid">
+      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">100%</p><p class="sub">todas as 7 coletas atendidas no prazo</p></div>
+      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">1 entrega atendida no prazo</p></div>
+      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">44%</p><p class="sub">média de 7 romaneios</p></div>
+    </div>
+  </div>
+
+  <div class="group-block">
+    <div class="group-head"><h2>Latas</h2></div>
+    <div class="kpi-grid">
+      <div class="kpi warn"><p class="label">OTP · coletas no prazo</p><p class="value">83%</p><p class="sub">7 de 42 coletas atrasadas</p></div>
+      <div class="kpi warn"><p class="label">OTD · entregas no prazo</p><p class="value">84%</p><p class="sub">8 de 51 entregas atrasadas</p></div>
+      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">46%</p><p class="sub">média de 42 romaneios</p></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="bar"></span>Comparativo Bens de Consumo x Latas</div>
+  <div class="chart-card"><canvas id="chartComparativo"></canvas></div>
+
+  <div class="section-title"><span class="bar"></span>Romaneios que precisam de atenção (15)</div>
+  <div class="chart-card" style="overflow-x:auto; padding:0;">
+    <table class="atraso-table">
+      <thead><tr><th>Romaneio</th><th>Grupo</th><th>Tipo</th><th>Cliente</th><th>Rota</th><th>Motorista</th><th>Programado</th><th>Chegada</th><th>Atraso</th></tr></thead>
+      <tbody>
+      <tr>
+        <td class="mono">476926</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Mauricio Roberto Da Silva</td>
+        <td class="mono">30/06/2026 22:00</td>
+        <td class="mono">01/07/2026 23:20</td>
+        <td><span class="sev-badge sev-high">25h21m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476922</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Elias Cerqueira</td>
+        <td class="mono">30/06/2026 22:31</td>
+        <td class="mono">01/07/2026 23:02</td>
+        <td><span class="sev-badge sev-high">24h31m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476940</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Sebastiao Rosa Neto</td>
+        <td class="mono">30/06/2026 22:36</td>
+        <td class="mono">01/07/2026 22:13</td>
+        <td><span class="sev-badge sev-high">23h38m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476926</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Mauricio Roberto Da Silva</td>
+        <td class="mono">30/06/2026 23:59</td>
+        <td class="mono">01/07/2026 23:31</td>
+        <td><span class="sev-badge sev-high">23h32m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476919</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Sebastiao Rosa Neto</td>
+        <td class="mono">30/06/2026 22:33</td>
+        <td class="mono">01/07/2026 21:50</td>
+        <td><span class="sev-badge sev-high">23h17m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476919</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Sebastiao Rosa Neto</td>
+        <td class="mono">30/06/2026 22:36</td>
+        <td class="mono">01/07/2026 21:52</td>
+        <td><span class="sev-badge sev-high">23h16m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476890</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Elias Cerqueira</td>
+        <td class="mono">30/06/2026 22:31</td>
+        <td class="mono">01/07/2026 21:00</td>
+        <td><span class="sev-badge sev-high">22h29m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476824</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Sebastiao Rosa Neto</td>
+        <td class="mono">30/06/2026 22:33</td>
+        <td class="mono">01/07/2026 20:42</td>
+        <td><span class="sev-badge sev-high">22h09m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476916</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Luiz Carlos Kwiatowski</td>
+        <td class="mono">30/06/2026 22:36</td>
+        <td class="mono">01/07/2026 17:03</td>
+        <td><span class="sev-badge sev-high">18h27m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476890</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Elias Cerqueira</td>
+        <td class="mono">30/06/2026 22:29</td>
+        <td class="mono">01/07/2026 14:51</td>
+        <td><span class="sev-badge sev-high">16h22m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476824</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Sebastiao Rosa Neto</td>
+        <td class="mono">30/06/2026 22:31</td>
+        <td class="mono">01/07/2026 13:23</td>
+        <td><span class="sev-badge sev-high">14h53m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476612</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Spal Industria - Itabirito - Mg</td>
+        <td>Cabreúva/SP &rarr; Porto Alegre/RS</td>
+        <td>Joao Batista De Almeida</td>
+        <td class="mono">30/06/2026 23:58</td>
+        <td class="mono">01/07/2026 14:24</td>
+        <td><span class="sev-badge sev-high">14h26m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476853</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Elias Cerqueira</td>
+        <td class="mono">30/06/2026 22:29</td>
+        <td class="mono">01/07/2026 12:00</td>
+        <td><span class="sev-badge sev-high">13h31m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476916</td>
+        <td>Latas</td>
+        <td>Coleta</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Luiz Carlos Kwiatowski</td>
+        <td class="mono">30/06/2026 22:33</td>
+        <td class="mono">01/07/2026 09:38</td>
+        <td><span class="sev-badge sev-high">11h06m &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476818</td>
+        <td>Latas</td>
+        <td>Entrega</td>
+        <td>Crown - Ponta Grossa - Pr</td>
+        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
+        <td>Luiz Carlos Kwiatowski</td>
+        <td class="mono">30/06/2026 22:31</td>
+        <td class="mono">01/07/2026 07:48</td>
+        <td><span class="sev-badge sev-high">9h18m &middot; Crítico</span></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="section-title"><span class="bar"></span>Cargas ofensoras de KM vazio — Latas > 50%, Bens de Consumo > 20% (7)</div>
+  <div class="chart-card" style="overflow-x:auto; padding:0;">
+    <table class="atraso-table">
+      <thead><tr><th>Romaneio</th><th>Grupo</th><th>Cliente</th><th>Rota</th><th>Motorista</th><th>KM vazio</th><th>KM carregado</th><th>% vazio</th></tr></thead>
+      <tbody>
+      <tr>
+        <td class="mono">476799</td>
+        <td>Bens de consumo</td>
+        <td></td>
+        <td>Amparo/SP &rarr; </td>
+        <td>Marcio Pedroso Da Silva</td>
+        <td class="mono">154.3 km</td>
+        <td class="mono">0.0 km</td>
+        <td><span class="sev-badge sev-high">100% &middot; Crítico</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476917</td>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td>Ipiranga/PR &rarr; Pouso Alegre/MG</td>
+        <td>Auran Vargas Vilalba</td>
+        <td class="mono">530.4 km</td>
+        <td class="mono">717.1 km</td>
+        <td><span class="sev-badge sev-mid">43% &middot; Atenção</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476837</td>
+        <td>Bens de consumo</td>
+        <td>Italac - Corumbaiba/Go</td>
+        <td>Corumbaíba/GO &rarr; Arujá/SP</td>
+        <td>Nilvandro Barbosa Santos</td>
+        <td class="mono">457.0 km</td>
+        <td class="mono">742.6 km</td>
+        <td><span class="sev-badge sev-mid">38% &middot; Atenção</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476776</td>
+        <td>Bens de consumo</td>
+        <td>Italac - Corumbaiba/Go</td>
+        <td>Ponta Grossa/PR &rarr; Mogi das Cruzes/SP</td>
+        <td>Floriano Bilinski</td>
+        <td class="mono">373.3 km</td>
+        <td class="mono">636.0 km</td>
+        <td><span class="sev-badge sev-mid">37% &middot; Atenção</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476825</td>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td>Ipiranga/PR &rarr; Jandira/SP</td>
+        <td>Luis Carlos Da Rocha</td>
+        <td class="mono">307.3 km</td>
+        <td class="mono">592.5 km</td>
+        <td><span class="sev-badge sev-low">34% &middot; Leve</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476775</td>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td>Ipiranga/PR &rarr; Jandira/SP</td>
+        <td>Lucas Garcia Lisecki</td>
+        <td class="mono">264.6 km</td>
+        <td class="mono">592.5 km</td>
+        <td><span class="sev-badge sev-low">31% &middot; Leve</span></td>
+      </tr>
+      <tr>
+        <td class="mono">476839</td>
+        <td>Bens de consumo</td>
+        <td>Italac - Corumbaiba/Go</td>
+        <td>Tapejara/RS &rarr; São Paulo/SP</td>
+        <td>Diego William Teixeira Da Silva</td>
+        <td class="mono">332.9 km</td>
+        <td class="mono">936.6 km</td>
+        <td><span class="sev-badge sev-low">26% &middot; Leve</span></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="manual-grid">
+    <div class="manual-card"><b>Avaria — Bens de Consumo</b>— (preencher manualmente)</div>
+    <div class="manual-card"><b>Avaria — Latas</b>— (preencher manualmente)</div>
+    <div class="manual-card"><b>Sinistro — Bens de Consumo</b>— (preencher manualmente)</div>
+    <div class="manual-card"><b>Sinistro — Latas</b>— (preencher manualmente)</div>
+  </div>
+
+  <div class="footer">
+    Metodologia: população de coletas/entregas extraída da LVIAGENS (colunas T e V); atraso calculado como LVIAGENS − LCARGAS cruzado pelo Nº de Romaneio; KM vazio ajustado pelas regras fixas de rota (aba "Regras KM" do Reuniao_OMS.xlsx). Gerado por gerar_relatorio.py.
+  </div>
+</div>
+
+<script>
+new Chart(document.getElementById('chartComparativo'), {
+  type: 'bar',
+  data: {
+    labels: ['OTP (coletas)', 'OTD (entregas)', 'KM vazio'],
+    datasets: [
+      { label: 'Bens de Consumo', data: [100, 100, 44], backgroundColor: '#f5a35c', borderRadius: 6, maxBarThickness: 46 },
+      { label: 'Latas', data: [83, 84, 46], backgroundColor: '#3c78b4', borderRadius: 6, maxBarThickness: 46 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top', labels: { font: { size: 12 }, color: '#5b6270' } }, tooltip: { callbacks: { label: (c) => c.dataset.label + ': ' + c.parsed.y + '%' } } },
+    scales: {
+      y: { beginAtZero: true, max: 100, ticks: { callback: (v) => v + '%', color: '#8a90a0' }, grid: { color: '#eef0f3' } },
+      x: { ticks: { color: '#5b6270' }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
