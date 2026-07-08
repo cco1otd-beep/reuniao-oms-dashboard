@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Reunião OMS - 07/07/2026</title>
+<title>Reunião OMS - 08/07/2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
   :root{
@@ -64,8 +64,8 @@
 <div class="wrap">
   <div class="header">
     <p class="eyebrow">Painel operacional · OMS</p>
-    <h1>Reunião OMS — 07/07/2026</h1>
-    <p>Indicadores referentes às chegadas de coleta e entrega do dia anterior (06/07/2026) · Fonte: cruzamento LCARGAS × LVIAGENS</p>
+    <h1>Reunião OMS — 08/07/2026</h1>
+    <p>Indicadores referentes às chegadas de coleta e entrega do dia anterior (07/07/2026) · Fonte: cruzamento LCARGAS × LVIAGENS</p>
   </div>
 
   <div class="section-title"><span class="bar"></span>Indicadores por operação</div>
@@ -73,39 +73,61 @@
   <div class="group-block">
     <div class="group-head"><h2>Bens de Consumo</h2></div>
     <div class="kpi-grid">
-      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">100%</p><p class="sub">todas as 5 coletas atendidas no prazo</p></div>
-      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">todas as 6 entregas atendidas no prazo</p></div>
-      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">51%</p><p class="sub">média de 5 romaneios</p></div>
+      <div class="kpi bad"><p class="label">OTP · coletas no prazo</p><p class="value">60%</p><p class="sub">2 de 5 coletas atrasadas</p></div>
+      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">todas as 4 entregas atendidas no prazo</p></div>
+      <div class="kpi warn"><p class="label">KM vazio</p><p class="value">39%</p><p class="sub">média de 5 romaneios</p></div>
     </div>
   </div>
 
   <div class="group-block">
     <div class="group-head"><h2>Latas</h2></div>
     <div class="kpi-grid">
-      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">99%</p><p class="sub">1 de 78 coletas atrasadas</p></div>
-      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">todas as 74 entregas atendidas no prazo</p></div>
-      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">47%</p><p class="sub">média de 78 romaneios</p></div>
+      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">97%</p><p class="sub">1 de 31 coletas atrasadas</p></div>
+      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">todas as 33 entregas atendidas no prazo</p></div>
+      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">42%</p><p class="sub">média de 31 romaneios</p></div>
     </div>
   </div>
 
   <div class="section-title"><span class="bar"></span>Comparativo Bens de Consumo x Latas</div>
   <div class="chart-card"><canvas id="chartComparativo"></canvas></div>
 
-  <div class="section-title"><span class="bar"></span>Coletas atrasadas (OTP) — precisam de atenção (1)</div>
+  <div class="section-title"><span class="bar"></span>Coletas atrasadas (OTP) — precisam de atenção (3)</div>
   <div class="chart-card" style="overflow-x:auto; padding:0;">
     <table class="atraso-table">
       <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>Atraso</th><th>Programado</th><th>Chegada</th><th>Motorista</th><th>Placa</th><th>Rota</th></tr></thead>
       <tbody>
       <tr>
+        <td>Bens de consumo</td>
+        <td>Leroy Merlin - Cajamar - Sp</td>
+        <td class="mono">477108</td>
+        <td><span class="sev-badge sev-high">10h16m &middot; Crítico</span></td>
+        <td class="mono">06/07/2026 23:00</td>
+        <td class="mono">07/07/2026 09:15</td>
+        <td>Franklyn Jonathan Teixeira</td>
+        <td class="mono">FCC-5C78</td>
+        <td>Cajamar/SP &rarr; Goiânia/GO</td>
+      </tr>
+      <tr>
         <td>Latas</td>
-        <td>Crown - Cabreuva - Sp</td>
-        <td class="mono">477327</td>
-        <td><span class="sev-badge sev-low">0h57m &middot; Leve</span></td>
-        <td class="mono">06/07/2026 16:00</td>
-        <td class="mono">06/07/2026 16:56</td>
-        <td>Rogerio Rosa Piochi</td>
-        <td class="mono">AWC-4168</td>
-        <td>Ponta Grossa/PR &rarr; Socorro/SP</td>
+        <td>Spal Industria - Itabirito - Mg</td>
+        <td class="mono">477385</td>
+        <td><span class="sev-badge sev-mid">7h28m &middot; Atenção</span></td>
+        <td class="mono">06/07/2026 23:59</td>
+        <td class="mono">07/07/2026 07:26</td>
+        <td>Reginaldo Delfino Da Silva</td>
+        <td class="mono">AWF-7E66</td>
+        <td>Cabreúva/SP &rarr; Marília/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Ype - Salto/Sp</td>
+        <td class="mono">477436</td>
+        <td><span class="sev-badge sev-mid">7h16m &middot; Atenção</span></td>
+        <td class="mono">07/07/2026 10:00</td>
+        <td class="mono">07/07/2026 17:15</td>
+        <td>Claiton Francisco De Jesus</td>
+        <td class="mono">BCK-5E80</td>
+        <td>Salto/SP &rarr; Medianeira/PR</td>
       </tr></tbody>
     </table>
   </div>
@@ -118,7 +140,7 @@
     </table>
   </div>
 
-  <div class="section-title"><span class="bar"></span>Cargas ofensoras de KM vazio — Latas > 50%, Bens de Consumo > 20% (3)</div>
+  <div class="section-title"><span class="bar"></span>Cargas ofensoras de KM vazio — Latas > 50%, Bens de Consumo > 20% (4)</div>
   <div class="chart-card" style="overflow-x:auto; padding:0;">
     <table class="atraso-table">
       <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>% vazio</th><th>KM vazio</th><th>KM carregado</th><th>Motorista</th><th>Rota</th></tr></thead>
@@ -126,32 +148,42 @@
       <tr>
         <td>Bens de consumo</td>
         <td></td>
-        <td class="mono">477314</td>
+        <td class="mono">477112</td>
         <td><span class="sev-badge sev-high">100% &middot; Crítico</span></td>
-        <td class="mono">19.5 km</td>
+        <td class="mono">89.4 km</td>
         <td class="mono">0.0 km</td>
-        <td>Vivaldo Araujo Carneiro Goncalves</td>
-        <td>Goiânia/GO &rarr; </td>
-      </tr>
-      <tr>
-        <td>Bens de consumo</td>
-        <td></td>
-        <td class="mono">477110</td>
-        <td><span class="sev-badge sev-high">100% &middot; Crítico</span></td>
-        <td class="mono">158.0 km</td>
-        <td class="mono">0.0 km</td>
-        <td>Washington Luiz Cornachini Junior</td>
+        <td>Noel Taborda Dos Santos</td>
         <td>Cajamar/SP &rarr; </td>
       </tr>
       <tr>
         <td>Bens de consumo</td>
         <td>Ype - Salto/Sp</td>
-        <td class="mono">477335</td>
-        <td><span class="sev-badge sev-mid">38% &middot; Atenção</span></td>
-        <td class="mono">418.5 km</td>
-        <td class="mono">682.5 km</td>
-        <td>Ricardo Ribeiro Da Rosa</td>
-        <td>Salto/SP &rarr; Cianorte/PR</td>
+        <td class="mono">477436</td>
+        <td><span class="sev-badge sev-low">35% &middot; Leve</span></td>
+        <td class="mono">511.2 km</td>
+        <td class="mono">950.5 km</td>
+        <td>Claiton Francisco De Jesus</td>
+        <td>Salto/SP &rarr; Medianeira/PR</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td class="mono">477419</td>
+        <td><span class="sev-badge sev-low">30% &middot; Leve</span></td>
+        <td class="mono">264.6 km</td>
+        <td class="mono">631.1 km</td>
+        <td>Luis Carlos Da Rocha</td>
+        <td>Ipiranga/PR &rarr; Jacareí/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Colgate Palmolive Industrial Ltda</td>
+        <td class="mono">477352</td>
+        <td><span class="sev-badge sev-low">20% &middot; Leve</span></td>
+        <td class="mono">150.6 km</td>
+        <td class="mono">590.5 km</td>
+        <td>Luiz Henrique Moreira Da Silva</td>
+        <td>São Bernardo do Campo/SP &rarr; Cambé/PR</td>
       </tr></tbody>
     </table>
   </div>
@@ -174,8 +206,8 @@ new Chart(document.getElementById('chartComparativo'), {
   data: {
     labels: ['OTP (coletas)', 'OTD (entregas)', 'KM vazio'],
     datasets: [
-      { label: 'Bens de Consumo', data: [100, 100, 51], backgroundColor: '#f5a35c', borderRadius: 6, maxBarThickness: 46 },
-      { label: 'Latas', data: [99, 100, 47], backgroundColor: '#3c78b4', borderRadius: 6, maxBarThickness: 46 }
+      { label: 'Bens de Consumo', data: [60, 100, 39], backgroundColor: '#f5a35c', borderRadius: 6, maxBarThickness: 46 },
+      { label: 'Latas', data: [97, 100, 42], backgroundColor: '#3c78b4', borderRadius: 6, maxBarThickness: 46 }
     ]
   },
   options: {
