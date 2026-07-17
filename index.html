@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Reunião OMS - 16/07/2026</title>
+<title>Reunião OMS - 17/07/2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
   :root{
@@ -64,8 +64,8 @@
 <div class="wrap">
   <div class="header">
     <p class="eyebrow">Painel operacional · OMS</p>
-    <h1>Reunião OMS — 16/07/2026</h1>
-    <p>Indicadores referentes às chegadas de coleta e entrega do dia anterior (15/07/2026) · Fonte: cruzamento LCARGAS × LVIAGENS</p>
+    <h1>Reunião OMS — 17/07/2026</h1>
+    <p>Indicadores referentes às chegadas de coleta e entrega do dia anterior (16/07/2026) · Fonte: cruzamento LCARGAS × LVIAGENS</p>
   </div>
 
   <div class="section-title"><span class="bar"></span>Indicadores por operação</div>
@@ -73,161 +73,180 @@
   <div class="group-block">
     <div class="group-head"><h2>Bens de Consumo</h2></div>
     <div class="kpi-grid">
-      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">91%</p><p class="sub">1 de 11 coletas atrasadas</p></div>
-      <div class="kpi bad"><p class="label">OTD · entregas no prazo</p><p class="value">67%</p><p class="sub">2 de 6 entregas atrasadas</p></div>
-      <div class="kpi ok"><p class="label">KM vazio</p><p class="value">20%</p><p class="sub">média de 11 romaneios</p></div>
+      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">90%</p><p class="sub">1 de 10 coletas atrasadas</p></div>
+      <div class="kpi warn"><p class="label">OTD · entregas no prazo</p><p class="value">76%</p><p class="sub">4 de 17 entregas atrasadas</p></div>
+      <div class="kpi ok"><p class="label">KM vazio</p><p class="value">25%</p><p class="sub">média de 10 romaneios</p></div>
     </div>
   </div>
 
   <div class="group-block">
     <div class="group-head"><h2>Latas</h2></div>
     <div class="kpi-grid">
-      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">100%</p><p class="sub">todas as 34 coletas atendidas no prazo</p></div>
-      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">90%</p><p class="sub">4 de 39 entregas atrasadas</p></div>
-      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">42%</p><p class="sub">média de 34 romaneios</p></div>
+      <div class="kpi ok"><p class="label">OTP · coletas no prazo</p><p class="value">97%</p><p class="sub">1 de 37 coletas atrasadas</p></div>
+      <div class="kpi ok"><p class="label">OTD · entregas no prazo</p><p class="value">100%</p><p class="sub">todas as 39 entregas atendidas no prazo</p></div>
+      <div class="kpi bad"><p class="label">KM vazio</p><p class="value">49%</p><p class="sub">média de 37 romaneios</p></div>
     </div>
   </div>
 
   <div class="section-title"><span class="bar"></span>Comparativo Bens de Consumo x Latas</div>
   <div class="chart-card"><canvas id="chartComparativo"></canvas></div>
 
-  <div class="section-title"><span class="bar"></span>Coletas atrasadas (OTP) — precisam de atenção (1)</div>
+  <div class="section-title"><span class="bar"></span>Coletas atrasadas (OTP) — precisam de atenção (2)</div>
   <div class="chart-card" style="overflow-x:auto; padding:0;">
     <table class="atraso-table">
       <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>Atraso</th><th>Programado</th><th>Chegada</th><th>Motorista</th><th>Placa</th><th>Rota</th></tr></thead>
       <tbody>
       <tr>
         <td>Bens de consumo</td>
-        <td>Leroy Merlin - Cajamar - Sp</td>
-        <td class="mono">477953</td>
-        <td><span class="sev-badge sev-high">16h42m &middot; Crítico</span></td>
-        <td class="mono">14/07/2026 23:00</td>
-        <td class="mono">15/07/2026 15:41</td>
-        <td>Chelinton Clayton Da Paz</td>
-        <td class="mono">BCY-6H82</td>
-        <td>Cajamar/SP &rarr; Brasília/DF</td>
-      </tr></tbody>
-    </table>
-  </div>
-
-  <div class="section-title"><span class="bar"></span>Entregas atrasadas (OTD) — precisam de atenção (6)</div>
-  <div class="chart-card" style="overflow-x:auto; padding:0;">
-    <table class="atraso-table">
-      <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>Atraso</th><th>Programado</th><th>Chegada</th><th>Motorista</th><th>Placa</th><th>Rota</th></tr></thead>
-      <tbody>
-      <tr>
-        <td>Latas</td>
-        <td>Crown - Ponta Grossa - Pr</td>
-        <td class="mono">477863</td>
-        <td><span class="sev-badge sev-high">63h37m &middot; Crítico</span></td>
-        <td class="mono">13/07/2026 01:05</td>
-        <td class="mono">15/07/2026 16:42</td>
-        <td>Ewerson Marcos Do Prado</td>
-        <td class="mono">HGJ-8D21</td>
-        <td>Ponta Grossa/PR &rarr; Ponta Grossa/PR</td>
-      </tr>
-      <tr>
-        <td>Bens de consumo</td>
-        <td>Leroy Merlin - Cajamar - Sp</td>
-        <td class="mono">477904</td>
-        <td><span class="sev-badge sev-high">31h56m &middot; Crítico</span></td>
-        <td class="mono">14/07/2026 01:00</td>
-        <td class="mono">15/07/2026 08:55</td>
-        <td>Vivaldo Araujo Carneiro Goncalves</td>
-        <td class="mono">FOC-4H73</td>
-        <td>Cajamar/SP &rarr; Brasília/DF</td>
-      </tr>
-      <tr>
-        <td>Latas</td>
-        <td>Crown - Ponta Grossa - Pr</td>
-        <td class="mono">477778</td>
-        <td><span class="sev-badge sev-high">15h52m &middot; Crítico</span></td>
-        <td class="mono">14/07/2026 23:59</td>
-        <td class="mono">15/07/2026 15:50</td>
-        <td>Eliel Nunes Pereira</td>
-        <td class="mono">GCI-6C45</td>
-        <td>Cabreúva/SP &rarr; Ponta Grossa/PR</td>
-      </tr>
-      <tr>
-        <td>Latas</td>
-        <td>Crown - Ponta Grossa - Pr</td>
-        <td class="mono">477612</td>
-        <td><span class="sev-badge sev-mid">6h06m &middot; Atenção</span></td>
-        <td class="mono">14/07/2026 23:59</td>
-        <td class="mono">15/07/2026 06:04</td>
-        <td>Valdecir Dos Santos</td>
-        <td class="mono">EMY-1J30</td>
-        <td>Cabreúva/SP &rarr; Ponta Grossa/PR</td>
+        <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
+        <td class="mono">478124</td>
+        <td><span class="sev-badge sev-mid">3h10m &middot; Atenção</span></td>
+        <td class="mono">16/07/2026 00:00</td>
+        <td class="mono">16/07/2026 03:10</td>
+        <td>Samuel Pereira Silva</td>
+        <td class="mono">FCM-4H34</td>
+        <td>São Bernardo do Campo/SP &rarr; Cambé/PR</td>
       </tr>
       <tr>
         <td>Latas</td>
         <td>Crown - Cabreuva - Sp</td>
-        <td class="mono">477909</td>
-        <td><span class="sev-badge sev-mid">4h19m &middot; Atenção</span></td>
-        <td class="mono">15/07/2026 07:00</td>
-        <td class="mono">15/07/2026 11:19</td>
-        <td>Reginaldo Delfino Da Silva</td>
-        <td class="mono">AWF-7E66</td>
-        <td>Socorro/SP &rarr; Ponta Grossa/PR</td>
-      </tr>
-      <tr>
-        <td>Bens de consumo</td>
-        <td>Mariza Aguas Minerais Ltda</td>
-        <td class="mono">477656</td>
-        <td><span class="sev-badge sev-low">0h55m &middot; Leve</span></td>
-        <td class="mono">15/07/2026 08:00</td>
-        <td class="mono">15/07/2026 08:54</td>
-        <td>Noel Taborda Dos Santos</td>
-        <td class="mono">GAM-6H25</td>
-        <td>Hidrolândia/GO &rarr; Jacareí/SP</td>
+        <td class="mono">478153</td>
+        <td><span class="sev-badge sev-mid">3h11m &middot; Atenção</span></td>
+        <td class="mono">16/07/2026 16:00</td>
+        <td class="mono">16/07/2026 19:11</td>
+        <td>Jeferson Da Silva Santos</td>
+        <td class="mono">CUD-3C89</td>
+        <td>Cabreúva/SP &rarr; Ribeirão Preto/SP</td>
       </tr></tbody>
     </table>
   </div>
 
-  <div class="section-title"><span class="bar"></span>Cargas ofensoras de KM vazio — Latas > 50%, Bens de Consumo > 20% (4)</div>
+  <div class="section-title"><span class="bar"></span>Entregas atrasadas (OTD) — precisam de atenção (4)</div>
+  <div class="chart-card" style="overflow-x:auto; padding:0;">
+    <table class="atraso-table">
+      <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>Atraso</th><th>Programado</th><th>Chegada</th><th>Motorista</th><th>Placa</th><th>Rota</th></tr></thead>
+      <tbody>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Leroy Merlin - Cajamar - Sp</td>
+        <td class="mono">477899</td>
+        <td><span class="sev-badge sev-high">54h16m &middot; Crítico</span></td>
+        <td class="mono">14/07/2026 01:00</td>
+        <td class="mono">16/07/2026 07:16</td>
+        <td>Luiz Henrique Moreira Da Silva</td>
+        <td class="mono">TBN-0G19</td>
+        <td>Cajamar/SP &rarr; Goiânia/GO</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Colgate Palmolive Industrial Ltda</td>
+        <td class="mono">477949</td>
+        <td><span class="sev-badge sev-mid">5h53m &middot; Atenção</span></td>
+        <td class="mono">16/07/2026 08:00</td>
+        <td class="mono">16/07/2026 13:52</td>
+        <td>Alexandre Pereira De Paula</td>
+        <td class="mono">TBN-0G59</td>
+        <td>São Bernardo do Campo/SP &rarr; Paiçandu/PR</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td class="mono">477654</td>
+        <td><span class="sev-badge sev-mid">4h26m &middot; Atenção</span></td>
+        <td class="mono">16/07/2026 11:00</td>
+        <td class="mono">16/07/2026 15:26</td>
+        <td>Claiton Francisco De Jesus</td>
+        <td class="mono">BCK-5E80</td>
+        <td>Ipiranga/PR &rarr; Jandira/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
+        <td class="mono">478106</td>
+        <td><span class="sev-badge sev-mid">2h08m &middot; Atenção</span></td>
+        <td class="mono">16/07/2026 08:00</td>
+        <td class="mono">16/07/2026 10:08</td>
+        <td>Felipe Rodrigues Siqueira</td>
+        <td class="mono">BCI-2085</td>
+        <td>São José dos Pinhais/PR &rarr; Curitiba/PR</td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="section-title"><span class="bar"></span>Cargas ofensoras de KM vazio — Latas > 50%, Bens de Consumo > 20% (7)</div>
   <div class="chart-card" style="overflow-x:auto; padding:0;">
     <table class="atraso-table">
       <thead><tr><th>Grupo</th><th>Cliente</th><th>Romaneio</th><th>% vazio</th><th>KM vazio</th><th>KM carregado</th><th>Motorista</th><th>Rota</th></tr></thead>
       <tbody>
       <tr>
         <td>Bens de consumo</td>
-        <td></td>
-        <td class="mono">477952</td>
-        <td><span class="sev-badge sev-high">100% &middot; Crítico</span></td>
-        <td class="mono">179.0 km</td>
-        <td class="mono">0.0 km</td>
-        <td>Edson Luiz Portela De Almeida</td>
-        <td>Salto/SP &rarr; </td>
+        <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
+        <td class="mono">478182</td>
+        <td><span class="sev-badge sev-high">55% &middot; Crítico</span></td>
+        <td class="mono">676.4 km</td>
+        <td class="mono">545.9 km</td>
+        <td>Alexandre Pereira De Paula</td>
+        <td>São Bernardo do Campo/SP &rarr; Ibiporã/PR</td>
       </tr>
       <tr>
         <td>Bens de consumo</td>
         <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
-        <td class="mono">478095</td>
-        <td><span class="sev-badge sev-mid">41% &middot; Atenção</span></td>
-        <td class="mono">461.7 km</td>
-        <td class="mono">669.3 km</td>
-        <td>Ricardo Ribeiro Da Rosa</td>
-        <td>São Bernardo do Campo/SP &rarr; Maringá/PR</td>
+        <td class="mono">478124</td>
+        <td><span class="sev-badge sev-mid">49% &middot; Atenção</span></td>
+        <td class="mono">575.0 km</td>
+        <td class="mono">590.5 km</td>
+        <td>Samuel Pereira Silva</td>
+        <td>São Bernardo do Campo/SP &rarr; Cambé/PR</td>
       </tr>
       <tr>
         <td>Bens de consumo</td>
-        <td>Colgate Palmolive Industrial Ltda</td>
-        <td class="mono">477981</td>
-        <td><span class="sev-badge sev-low">28% &middot; Leve</span></td>
-        <td class="mono">173.0 km</td>
-        <td class="mono">448.5 km</td>
-        <td>Franklyn Jonathan Teixeira</td>
-        <td>São Bernardo do Campo/SP &rarr; Curitiba/PR</td>
+        <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
+        <td class="mono">478178</td>
+        <td><span class="sev-badge sev-mid">43% &middot; Atenção</span></td>
+        <td class="mono">532.5 km</td>
+        <td class="mono">692.6 km</td>
+        <td>Floriano Bilinski</td>
+        <td>São Bernardo do Campo/SP &rarr; Paiçandu/PR</td>
       </tr>
       <tr>
         <td>Bens de consumo</td>
-        <td>Colgate Palmolive Industrial Ltda</td>
-        <td class="mono">478079</td>
+        <td>Transpanorama Transportes - Aparecida de</td>
+        <td class="mono">478096</td>
+        <td><span class="sev-badge sev-low">35% &middot; Leve</span></td>
+        <td class="mono">419.2 km</td>
+        <td class="mono">789.0 km</td>
+        <td>Vivaldo Araujo Carneiro Goncalves</td>
+        <td>Araporã/MG &rarr; Santos/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Otd Logistics Matriz - Sao Jose dos Pinh</td>
+        <td class="mono">478163</td>
+        <td><span class="sev-badge sev-low">24% &middot; Leve</span></td>
+        <td class="mono">21.8 km</td>
+        <td class="mono">70.6 km</td>
+        <td>Elias Pereira</td>
+        <td>São Paulo/SP &rarr; Arujá/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td class="mono">478213</td>
+        <td><span class="sev-badge sev-low">21% &middot; Leve</span></td>
+        <td class="mono">176.3 km</td>
+        <td class="mono">669.9 km</td>
+        <td>Jose Mario Lima De Carvalho</td>
+        <td>Ipiranga/PR &rarr; Arujá/SP</td>
+      </tr>
+      <tr>
+        <td>Bens de consumo</td>
+        <td>Lacticinios Tirol - Ipiranga - Pr</td>
+        <td class="mono">478215</td>
         <td><span class="sev-badge sev-low">20% &middot; Leve</span></td>
-        <td class="mono">114.3 km</td>
-        <td class="mono">445.1 km</td>
-        <td>Noel Taborda Dos Santos</td>
-        <td>São Bernardo do Campo/SP &rarr; Curitiba/PR</td>
+        <td class="mono">172.4 km</td>
+        <td class="mono">669.9 km</td>
+        <td>Marcos Roberto Graeff</td>
+        <td>Ipiranga/PR &rarr; Arujá/SP</td>
       </tr></tbody>
     </table>
   </div>
@@ -250,8 +269,8 @@ new Chart(document.getElementById('chartComparativo'), {
   data: {
     labels: ['OTP (coletas)', 'OTD (entregas)', 'KM vazio'],
     datasets: [
-      { label: 'Bens de Consumo', data: [91, 67, 20], backgroundColor: '#f5a35c', borderRadius: 6, maxBarThickness: 46 },
-      { label: 'Latas', data: [100, 90, 42], backgroundColor: '#3c78b4', borderRadius: 6, maxBarThickness: 46 }
+      { label: 'Bens de Consumo', data: [90, 76, 25], backgroundColor: '#f5a35c', borderRadius: 6, maxBarThickness: 46 },
+      { label: 'Latas', data: [97, 100, 49], backgroundColor: '#3c78b4', borderRadius: 6, maxBarThickness: 46 }
     ]
   },
   options: {
